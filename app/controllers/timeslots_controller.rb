@@ -1,5 +1,5 @@
 class TimeslotsController < ApplicationController
-	before_action :get_timeslot, only:[:edit,:create]
+	before_action :get_timeslot, only:[:edit,:update]
 
 	def new
 		@timeslot = Timeslot.new
@@ -27,7 +27,7 @@ class TimeslotsController < ApplicationController
 
 	private
 		def timeslot_params
-			params.require(:timeslot).permite(:starttime,:endtime)
+			params.require(:timeslot).permit(:starttime,:endtime)
 		end
 
 		def get_timeslot
