@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shipments
   resources :states
   resources :dock_workers
+  resources :timeslots
 
   get '/dock_workers/:id/archived', :to => 'dock_workers#archived', :as => :archived
 
