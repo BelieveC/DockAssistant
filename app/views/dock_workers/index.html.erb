@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dock Workers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Address</th>
+      <th>State</th>
+      <th>Zipcode</th>
+      <th>Pay rate</th>
+      <!--<th>Archived</th>-->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dock_workers.each do |dock_worker| %>
+      <tr>
+        <td><%= dock_worker.last_name %></td>
+        <td><%= dock_worker.first_name %></td>
+        <td><%= dock_worker.address %></td>
+        <td><%= dock_worker.state.try(:name)%></td>
+        <td><%= dock_worker.zipcode %></td>
+        <td><%= dock_worker.pay_rate %></td>
+        <!--<td><%= dock_worker.archived %></td>-->
+        <td><%= link_to 'Show', dock_worker %></td>
+        <td><%= link_to 'Edit', edit_dock_worker_path(dock_worker) %></td>
+        <td><%= link_to 'Destroy', dock_worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dock Worker', new_dock_worker_path %>

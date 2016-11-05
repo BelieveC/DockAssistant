@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dock Assistant</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li> <%= link_to 'Reservation', reservations_path %></li>
+          <li> <%= link_to 'Vendor', vendors_path %></li>
+          <li> <%= link_to 'Appointment', appointments_path %></li>
+          <li> <%= link_to 'Shipment', shipments_path %></li>
+          <li> <%= link_to 'Dock Worker', dock_workers_path %></li>
+          <li> <%= link_to 'Dock', docks_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    <%= yield %>
+  </body>
+</html>
