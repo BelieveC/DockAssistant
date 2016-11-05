@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104013446) do
+ActiveRecord::Schema.define(version: 20161105170931) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "datetime"
     t.integer  "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "dock_workers", force: :cascade do |t|
@@ -53,6 +54,12 @@ ActiveRecord::Schema.define(version: 20161104013446) do
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "timeslots", force: :cascade do |t|
+    t.datetime "slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
