@@ -16,11 +16,6 @@
     <%= f.collection_select :dock_worker_id, DockWorker.all,:id,:last_name %>
   </div>
 
-  <div class="field">
-    <%= f.label :appointment %>
-    <%= f.collection_select :appointment_id, Appointment.all,:id, :name %>
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
