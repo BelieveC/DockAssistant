@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$('#display_appointment_form').on('click',function(){
+		$("#availability_form").fadeOut();
+		$("#appointment_form").fadeIn();
+		
+	});
+	$('#display_availability_form').on('click',function(){
+		$("#availability_form").fadeIn();
+		$("#appointment_form").fadeOut();
+	});
+});
+
