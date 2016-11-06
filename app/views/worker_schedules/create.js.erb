@@ -1,1 +1,1 @@
-alert("Hello");
+$('#added_worker_div').prepend('<%= j render partial: "shared/remove_worker",locals:{worker: @worker,timeslot: @timeslot,appointment: @appointment}%>').fadeIn();
