@@ -24,19 +24,20 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
 
-    @date = params["appointment"]["datetime(1i)"] + "-" + params["appointment"]["datetime(2i)"] + "-" + params["appointment"]["datetime(3i)"]   
+    @date = Date.new params["appointment"]["datetime(1i)"].to_i,params["appointment"]["datetime(2i)"].to_i,params["appointment"]["datetime(3i)"].to_i   
     @dock = Dock.find(params[:appointment][:dock_id])
     @time = "2000-01-01 "+ params["appointment"]["datetime(4i)"] + ":" + params["appointment"]["datetime(5i)"] +":00"
     @timeslot = Timeslot.where(date: @date, time: @time).first_or_create
     if @dock.timeslots.include?(@timeslot)
-      render :back
+      redirect_to :back,notice:"This timeslot not available. Please select different Timeslot" and return
     end
 
     @appointment = Appointment.new(appointment_params)
+    @appointment.timeslot = @timeslot
     respond_to do |format|
       if @appointment.save
         @dock.dock_schedules.create(timeslot_id: @timeslot.id)
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
+        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' and return }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new }
@@ -81,7 +82,7 @@ class AppointmentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {render :back}
+      format.html {redirect_to :back}
       format.js
     end
   end
