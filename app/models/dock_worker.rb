@@ -1,7 +1,8 @@
 class DockWorker < ApplicationRecord
   belongs_to :state
-
-  has_and_belongs_to_many :timeslots
+  
+  has_many :worker_schedules
+  has_many :timeslots,:through=> :worker_schedules
   has_many :shipments
   has_many :appointments, :through => :shipments
 
