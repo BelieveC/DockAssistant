@@ -23,10 +23,19 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
 
+    @date = params["appointment"]["datetime(1i)"] + "-" + params["appointment"]["datetime(2i)"] + "-" + params["appointment"]["datetime(3i)"]   
+    @dock = Dock.find(params[:appointment][:dock_id])
+    @time = "2000-01-01 "+ params["appointment"]["datetime(4i)"] + ":" + params["appointment"]["datetime(5i)"] +":00"
+    @timeslot = Timeslot.where(date: @date, time: @time).first_or_create
+    if @dock.timeslots.include?(@timeslot)
+      render :back
+    end
+
+    @appointment = Appointment.new(appointment_params)
     respond_to do |format|
       if @appointment.save
+        @dock.dock_schedules.create(timeslot_id: @timeslot.id)
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
       else
@@ -60,6 +69,22 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def check
+    @dock = Dock.find(params[:dock_id])
+    @time = "2000-01-01 "+params[:time]+":00"
+    puts @time
+    @timeslot = Timeslot.where(date: params[:date], time: @time).first_or_create
+    if @dock.timeslots.include?(@timeslot)
+      @flag = true
+    else
+      @flag = false
+    end
+
+    respond_to do |format|
+      format.html {render :back}
+      format.js
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
@@ -68,6 +93,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:datetime, :vendor_id,:name)
+      params.require(:appointment).permit(:datetime, :vendor_id,:name,:dock_id)
     end
 end
