@@ -1,31 +1,51 @@
-<%= form_for(appointment) do |f| %>
-  <% if appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+<div id="availability_form">
+  <div id="alert">
+  </div> 
+  <div class="field">
+    <%= form_tag(check_availability_path,method: :get,remote: true) do%>
+      <%= select_tag :dock_id,options_for_select(Dock.all.collect{ |u| [u.name, u.id] }) %>
+      <%= date_field_tag(:date) %>
+      <%= time_field_tag(:time) %>
+      <%=submit_tag(value="Check Availabilty")%>
+    <% end%>
+  </div>
+  <a id="display_appointment_form">Next</a>
+</div>
 
-      <ul>
-      <% appointment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div id="appointment_form" style="display:none">
+  <a id="display_availability_form">Back</a>
+  <%= form_for(appointment) do |f| %>
+    <% if appointment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+        <ul>
+        <% appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name%>
+    </div>
+    <div class="field">
+      <%= f.label :dock %>
+      <%= f.collection_select :dock_id, Dock.all, :id, :name %>
+    </div>
+    <div class="field">
+      <%= f.label :datetime %>
+      <%= f.datetime_select :datetime,:minute_step => 60, :ampm => true,:id=>"appointment_date" %>
+    </div>
+    <div class="field">
+      <%= f.label :vendor %>
+      <%= f.collection_select :vendor_id, Vendor.all, :id, :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :datetime %>
-    <%= f.datetime_select :datetime,:minute_step => 60, :ampm => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :vendor %>
-    <%= f.collection_select :vendor_id, Vendor.all, :id, :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
