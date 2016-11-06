@@ -17,36 +17,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-ul {
-    list-style-type: none;
-    margin: 0em;
-    padding: 1em;
-    overflow: hidden;
-    background-color: black;
-}
+// ul {
+//     list-style-type: none;
+//     margin: 0em;
+//     padding: 1em;
+//     overflow: hidden;
+//     background-color: black;
+// }
 
-li {
-    float: right;
-}
+// li {
+//     float: right;
+// }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 25px 16px;
-    text-decoration: none;
-}
+// li a {
+//     display: block;
+//     color: white;
+//     text-align: center;
+//     padding: 25px 16px;
+//     text-decoration: none;
+// }
 
-li a:hover {
-    background-color: rosybrown;
-}
+// li a:hover {
+//     background-color: rosybrown;
+// }
 
-h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-}
+// h1 {
+//     font-size: 3em;
+//     letter-spacing: -2px;
+//     margin-bottom: 30px;
+//     text-align: center;
+// }
 
 
 table, td, th {
@@ -62,4 +62,4 @@ th, td {
     padding: 15px;
 }
 
-tr:nth-child(even){background-color: lightsteelblue}
+// tr:nth-child(even){background-color: lightsteelblue}

@@ -1,17 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Datetime:</strong>
-  <%= @appointment.datetime %>
-</p>
+	<p>
+	  <strong>Datetime:</strong>
+	  <%= @appointment.datetime %>
+	</p>
 
-<p>
-  <strong>Vendor:</strong>
-  <%= @appointment.vendor_id %>
-</p>
-
-
+	<p>
+	  <strong>Vendor:</strong>
+	  <%= @appointment.vendor_id %>
+	</p>
 
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+
+
+	<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+	<%= link_to 'Back', appointments_path %>
+
+</div>

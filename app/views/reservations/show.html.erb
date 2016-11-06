@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Appointment:</strong>
-  <%= @reservation.appointment_id %>
-</p>
+	<p>
+	  <strong>Appointment:</strong>
+	  <%= @reservation.appointment_id %>
+	</p>
 
-<p>
-  <strong>Dock:</strong>
-  <%= @reservation.dock_id %>
-</p>
+	<p>
+	  <strong>Dock:</strong>
+	  <%= @reservation.dock_id %>
+	</p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+	<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+	<%= link_to 'Back', reservations_path %>
+
+</div>
