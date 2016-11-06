@@ -13,12 +13,21 @@
 	
 	<% @timeslot = @appointment.timeslot %>
 	<% if @timeslot.present? %>
-		<% DockWorker.all.each do |worker| %>
-			<% unless worker.timeslots.include?(@timeslot) %>
-				<p><%= worker.last_name %></p>
-				<p><% render "add_worker",locals:{@worker: worker}%></p>
+		<h3>Added Worker</h1>
+		<div id="added_worker">
+			<% @appointment.dock_workers.each do |worker| %>
+				<%= render partial: 'shared/remove_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment}%>
 			<% end %>
-		<% end %>
+		</div>	
+		<br><br>
+		<h3>Add Worker</h1>
+		<div id="add_worker">
+			<% DockWorker.all.each do |worker| %>
+				<% unless worker.timeslots.include?(@timeslot) %>
+					<p><%= render partial: 'shared/add_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment} %></p>
+				<% end %>
+			<% end %>
+		</div>
 	<% end %>
 	<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
 	<%= link_to 'Back', appointments_path %>
