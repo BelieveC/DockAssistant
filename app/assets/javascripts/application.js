@@ -18,13 +18,16 @@
 
 $(document).ready(function(){
 	$('#display_appointment_form').on('click',function(){
-		$("#availability_form").fadeOut();
-		$("#appointment_form").fadeIn();
+		$("#availability_form").fadeOut(function(){
+			$("#appointment_form").fadeIn();
+		});
+		
 		
 	});
 	$('#display_availability_form').on('click',function(){
-		$("#availability_form").fadeIn();
-		$("#appointment_form").fadeOut();
+		$("#appointment_form").fadeOut(function(){
+			$("#availability_form").fadeIn();
+		});
 	});
 });
 
