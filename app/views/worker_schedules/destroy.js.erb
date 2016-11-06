@@ -1,1 +1,1 @@
-alert("Hello");
+$('#add_worker_div').prepend('<%= j render partial: "shared/add_worker",locals:{worker: @worker,timeslot: @timeslot,appointment: @appointment }%>').fadeIn();
