@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 	$('#display_appointment_form').on('click',function(){
 		$("#availability_form").fadeOut(function(){
 			$("#appointment_form").fadeIn();
