@@ -29,5 +29,12 @@ $(document).ready(function(){
 			$("#availability_form").fadeIn();
 		});
 	});
+	$('#add_worker_div').on('click','.add_worker_form',function(){
+		$(this).fadeOut();
+	});
+	$('#added_worker_div').on('click','.remove_worker_form',function(){
+		$(this).fadeOut();
+	});
+
 });
 
