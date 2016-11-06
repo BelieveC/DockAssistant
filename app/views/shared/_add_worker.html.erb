@@ -1,8 +1,10 @@
-<p><%= worker.last_name %>
-<%= form_tag(add_worker_path,remote: true) do %>
-  <%= hidden_field_tag :worker_id,  worker.id %>
-  <%= hidden_field_tag :timeslot_id,  timeslot.id %>
-  <%= hidden_field_tag :appointment_id,  appointment.id %>
-  <%= submit_tag ("Add") %>
-<% end %>
-</p>
+<div class="add_worker_form">
+	<p><%= worker.last_name %>
+	<%= form_tag(add_worker_path,remote: true) do %>
+	  <%= hidden_field_tag :worker_id,  worker.id %>
+	  <%= hidden_field_tag :timeslot_id,  timeslot.id %>
+	  <%= hidden_field_tag :appointment_id,  appointment.id %>
+	  <%= submit_tag ("Add") %>
+	<% end %>
+	</p>
+</div>
