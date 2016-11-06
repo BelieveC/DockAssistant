@@ -14,14 +14,14 @@
 	<% @timeslot = @appointment.timeslot %>
 	<% if @timeslot.present? %>
 		<h3>Added Worker</h1>
-		<div id="added_worker">
+		<div id="added_worker_div">
 			<% @appointment.dock_workers.each do |worker| %>
 				<%= render partial: 'shared/remove_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment}%>
 			<% end %>
 		</div>	
 		<br><br>
 		<h3>Add Worker</h1>
-		<div id="add_worker">
+		<div id="add_worker_div">
 			<% DockWorker.all.each do |worker| %>
 				<% unless worker.timeslots.include?(@timeslot) %>
 					<p><%= render partial: 'shared/add_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment} %></p>
