@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dock_workers_id: 1
+  timeslots_id: 1
+
+two:
+  dock_workers_id: 1
+  timeslots_id: 1

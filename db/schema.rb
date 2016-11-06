@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105172813) do
+ActiveRecord::Schema.define(version: 20161106023621) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "datetime"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20161105172813) do
     t.boolean  "archived"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "dock_workers_timeslots", id: false, force: :cascade do |t|
+    t.integer "dock_worker_id"
+    t.integer "timeslot_id"
+    t.index ["dock_worker_id", "timeslot_id"], name: "index_dock_workers_timeslots_on_dock_worker_id_and_timeslot_id"
   end
 
   create_table "docks", force: :cascade do |t|
