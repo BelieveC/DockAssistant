@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106040043) do
+ActiveRecord::Schema.define(version: 20161106130015) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "datetime"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20161106040043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.integer  "dock_id"
+  end
+
+  create_table "dock_schedules", force: :cascade do |t|
+    t.integer  "dock_id"
+    t.integer  "timeslot_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["dock_id"], name: "index_dock_schedules_on_dock_id"
+    t.index ["timeslot_id"], name: "index_dock_schedules_on_timeslot_id"
   end
 
   create_table "dock_workers", force: :cascade do |t|
@@ -32,22 +42,10 @@ ActiveRecord::Schema.define(version: 20161106040043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dock_workers_timeslots", id: false, force: :cascade do |t|
-    t.integer "dock_worker_id"
-    t.integer "timeslot_id"
-    t.index ["dock_worker_id", "timeslot_id"], name: "index_dock_workers_timeslots_on_dock_worker_id_and_timeslot_id"
-  end
-
   create_table "docks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "docks_timeslots", id: false, force: :cascade do |t|
-    t.integer "dock_id"
-    t.integer "timeslot_id"
-    t.index ["dock_id", "timeslot_id"], name: "index_docks_timeslots_on_dock_id_and_timeslot_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -73,14 +71,23 @@ ActiveRecord::Schema.define(version: 20161106040043) do
   create_table "timeslots", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "starttime"
-    t.datetime "endtime"
+    t.date     "date"
+    t.time     "time"
   end
 
   create_table "vendors", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "worker_schedules", force: :cascade do |t|
+    t.integer  "dock_worker_id"
+    t.integer  "timeslot_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["dock_worker_id"], name: "index_worker_schedules_on_dock_worker_id"
+    t.index ["timeslot_id"], name: "index_worker_schedules_on_timeslot_id"
   end
 
 end
