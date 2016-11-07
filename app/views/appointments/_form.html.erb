@@ -1,21 +1,24 @@
 <div id="availability_form">
+  <h2>Check Availability</h2>
   <div id="alert">
     <p id="notice"><%= notice %></p>
   </div> 
   <div class="field">
-    <%= form_tag(check_availability_path,method: :get,remote: true) do%>
-      <%= select_tag :dock_id,options_for_select(Dock.all.collect{ |u| [u.name, u.id] }) %>
-      <%= date_field_tag(:date) %>
-      <%= time_field_tag(:time) %>
-      <%=submit_tag(value="Check Availabilty")%>
-    <% end%>
+     <%= simple_form_for(:check,{url: check_availability_path,method: :get,remote:true}) do |f| %>
+      <%= f.input :dock_id,label:"Dock",collection: Dock.all,prompt:"Select dock" %>
+      <%= f.input :date,label:"Date",as: :date %>
+      <%= f.input :time,as: :time,label:"Time",:minute_step=>60 %>
+      <%= f.submit "Check Availability" %>
+    <% end %>
   </div>
-  <a id="display_appointment_form">Next</a>
+  <a id="display_appointment_form" class="btn btn-primary">Next</a>
 </div>
 
 <div id="appointment_form" style="display:none">
-  <a id="display_availability_form">Back</a>
-  <%= form_for(@appointment) do |f| %>
+  <h2>New Appointment</h2>
+  <a id="display_availability_form" class="btn btn-primary">Back</a>
+  <br><br>
+  <%= simple_form_for(@appointment) do |f| %>
     <% if appointment.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -27,26 +30,10 @@
         </ul>
       </div>
     <% end %>
-    
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name%>
-    </div>
-    <div class="field">
-      <%= f.label :dock %>
-      <%= f.collection_select :dock_id, Dock.all, :id, :name %>
-    </div>
-    <div class="field">
-      <%= f.label :datetime %>
-      <%= f.datetime_select :datetime,:minute_step => 60, :ampm => true,:id=>"appointment_date" %>
-    </div>
-    <div class="field">
-      <%= f.label :vendor %>
-      <%= f.collection_select :vendor_id, Vendor.all, :id, :name %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <%= f.input :name,placeholder:"Enter name for Appointment" %>
+    <%= f.input :dock_id,collection: Dock.all,prompt: "Select Dock for appointment" %>
+    <%= f.input :datetime,:ampm=> true,:minute_step => 60%>
+    <%= f.input :vendor_id,collection: Vendor.all,prompt: "Select Vendor for appointment" %>
+    <%= f.submit class:"btn btn-success" %>
   <% end %>
 </div>
