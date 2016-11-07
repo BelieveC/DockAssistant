@@ -1,4 +1,4 @@
-<%= form_for(vendor) do |f| %>
+<%= simple_form_for(vendor,html:{class:"form-horizontal"}) do |f| %>
   <% if vendor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
@@ -10,13 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.input :name,placeholder:"Enter vendor name" %>
+  <%= f.submit class:"btn btn-success" %>
 <% end %>
