@@ -71,10 +71,11 @@ class AppointmentsController < ApplicationController
   end
 
   def check
-    @dock = Dock.find(params[:dock_id])
-    @time = "2000-01-01 "+params[:time]+":00"
+    @date = Date.new params["check"]["date(1i)"].to_i,params["check"]["date(2i)"].to_i,params["check"]["date(3i)"].to_i
+    @dock = Dock.find(params[:check][:dock_id])
+    @time = "2000-01-01 "+ params["check"]["time(4i)"]+ ":" + params["check"]["time(4i)"]+":00"
+    @timeslot = Timeslot.where(date: params[:check][:date], time: @time).first_or_create
     puts @time
-    @timeslot = Timeslot.where(date: params[:date], time: @time).first_or_create
     if @dock.timeslots.include?(@timeslot)
       @flag = true
     else
