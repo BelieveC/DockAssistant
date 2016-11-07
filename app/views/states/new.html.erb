@@ -1,8 +1,10 @@
 <div class="container">
-	<h1>New State</h1>
+	<div class="rows">
+		<div class="col-md-6 col-md-offset-6">
+			<h1>New State</h1>
+			<%= render 'form', state: @state %>
 
-	<%= render 'form', state: @state %>
-
-	<%= link_to 'Back', states_path %>
-
+			<%= link_to 'Back', states_path,class:"btn btn-danger" %>
+		</div>
+	</div>
 </div>
