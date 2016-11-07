@@ -1,6 +1,13 @@
-<h1>Editing Dock</h1>
+<div class="container">
 
-<%= render 'form', dock: @dock %>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1>Edit Dock</h1>
 
-<%= link_to 'Show', @dock %> |
-<%= link_to 'Back', docks_path %>
+			<%= render 'form', dock: @dock %>
+			<br>
+			<%= link_to 'Back', docks_path,class:"btn btn-danger" %>
+
+		</div>
+	</div>
+</div>

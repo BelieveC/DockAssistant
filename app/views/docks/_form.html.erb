@@ -1,4 +1,4 @@
-<%= form_for(dock) do |f| %>
+<%= simple_form_for(dock) do |f| %>
   <% if dock.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(dock.errors.count, "error") %> prohibited this dock from being saved:</h2>
@@ -10,13 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.input :name,placeholder:"Enter Dock name" %>
+  <%= f.submit class:"btn btn-success"  %>
 <% end %>
