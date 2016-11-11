@@ -1,5 +1,5 @@
 class DocksController < ApplicationController
-  before_action :set_dock, only: [:show, :edit, :update, :destroy]
+  before_action :set_dock, only: [:show, :edit, :update, :destroy,:report]
 
   # GET /docks
   # GET /docks.json
@@ -7,12 +7,9 @@ class DocksController < ApplicationController
     @docks = Dock.all
   end
 
-  # GET /docks/1
-  # GET /docks/1.json
   def show
   end
 
-  # GET /docks/new
   def new
     @dock = Dock.new
   end
@@ -61,6 +58,16 @@ class DocksController < ApplicationController
     end
   end
 
+  def report
+    @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
+    @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
+    @totaldays = (@end_date - @start_date).to_i
+    @timeslots = @dock.timeslots.where(date: (@start_date..@end_date))
+    puts @timeslots.count
+    respond_to do |format|
+      format.js
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dock
