@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106135235) do
+ActiveRecord::Schema.define(version: 20161111162548) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "datetime"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20161106135235) do
     t.string   "zipcode"
     t.float    "pay_rate"
     t.boolean  "archived"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.date     "last_payment_date"
   end
 
   create_table "docks", force: :cascade do |t|
