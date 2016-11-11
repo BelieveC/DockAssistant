@@ -1,0 +1,17 @@
+<br>
+<div class="container">
+	<div class="rows">
+		<div class="col-md-8 col-md-offset-2">
+			<h3>Salary Dues</h3>
+			<ul class="list-group">
+				<li class="list-group-item list-group-item-success"><%= "#{dock_worker.first_name} #{dock_worker.last_name}" %></li>
+				<li class="list-group-item list-group-item-success">Due Salary Period From: <%= dock_worker.last_payment_date %></li>
+				<li class="list-group-item list-group-item-success">Due Salary Period To: <%= Date.yesterday %></li>
+				<li class="list-group-item list-group-item-success">Total Days: <%= total_days %></li>
+				<li class="list-group-item list-group-item-success">Total Worked Hours: <%= timeslots.count %></li>
+				<li class="list-group-item list-group-item-success">Pay Rate per Hour: <%= @dock_worker.pay_rate %></li>
+				<li class="list-group-item list-group-item-success">Total Due Salary: <%= payment_due %> $</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,54 +1,40 @@
 <div class="container">
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= @dock_worker.last_name %>
-  </p>
-
-  <p>
-    <strong>First name:</strong>
-    <%= @dock_worker.first_name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= @dock_worker.address %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @dock_worker.state_id %>
-  </p>
-
-  <p>
-    <strong>Zipcode:</strong>
-    <%= @dock_worker.zipcode %>
-  </p>
-
-  <p>
-    <strong>Pay rate:</strong>
-    <%= @dock_worker.pay_rate %>
-  </p>
-
-  <p>
-    <strong>Archived:</strong>
-    <%= @dock_worker.archived %>
-  </p>
-
-  <%= link_to 'Edit', edit_dock_worker_path(@dock_worker) %> |
-  <%= link_to 'Back', dock_workers_path %>
-
-
-  <h3>Genarate Reports</h3>
-
-  <%= simple_form_for(:report,{url: dock_worker_report_path,method: :get,remote:true}) do |f| %>
-    <%= f.input :start_date,label:"Date",as: :date %>
-    <%= f.input :end_date,label:"Date",as: :date %>
-    <%= f.submit "Get Report" %>
-  <% end %>
-
-  <div id="dock_reports">
-    
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+      <p id="notice"><%= notice %></p>
+      <h3>Dock Worker Info</h3>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info">Last name: <%= @dock_worker.last_name %></li>
+        <li class="list-group-item list-group-item-info">First name: <%= @dock_worker.first_name %> </li>
+        <li class="list-group-item list-group-item-info">Address: <%= @dock_worker.address %></li>
+        <li class="list-group-item list-group-item-info">State: <%= @dock_worker.state.name %></li>
+        <li class="list-group-item list-group-item-info">Zipcode: <%= @dock_worker.zipcode %></li>
+        <li class="list-group-item list-group-item-info">Pay rate: <%= @dock_worker.pay_rate %>/hrs</li>
+      </ul>
+      <%= link_to 'Edit', edit_dock_worker_path(@dock_worker),class: "btn btn-success" %>
+      <%= link_to 'Back', dock_workers_path,class: "btn btn-success"  %>
+    </div>
+  </div>
+  <br><br>
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+        <h3>Generate Report</h3>
+        <%= simple_form_for(:report,{url: dock_worker_report_path,method: :get,remote:true}) do |f| %>
+          <%= f.input :start_date,label:"Date",as: :date %>
+          <%= f.input :end_date,label:"Date",as: :date %>
+          <%= f.submit "Get Report" %>
+        <% end %>
+    </div>
+    <div id="dock_reports"> </div>
+  </div>
+  <br><br>
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+      <h3></h3>
+      <%= link_to "Generate Due Payment",dock_worker_payment_path,class: "btn btn-success",remote: true %>
+      <br>
+    </div>
+    <div id="dock_worker_payment"></div>
   </div>
 </div>
+
