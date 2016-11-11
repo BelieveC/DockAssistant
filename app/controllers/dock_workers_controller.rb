@@ -1,5 +1,5 @@
 class DockWorkersController < ApplicationController
-  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy]
+  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report]
 
   # GET /dock_workers
   # GET /dock_workers.json
@@ -67,6 +67,17 @@ class DockWorkersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to dock_workers_url, notice: 'Dock worker was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def report
+    @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
+    @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
+    @totaldays = (@end_date - @start_date).to_i
+    @timeslots = @dock_worker.timeslots.where(date: (@start_date..@end_date))
+    puts @timeslots.count
+    respond_to do |format|
+      format.js
     end
   end
 
