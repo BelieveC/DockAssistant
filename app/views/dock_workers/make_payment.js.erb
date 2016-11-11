@@ -1,0 +1,4 @@
+$("#dock_worker_payment").fadeOut().html('<%= j render partial: "dock_worker_payment",locals:{dock_worker: @dock_worker,payment_due: @payment_due,timeslots: @timeslots,total_days: @total_days}%>').fadeIn();
+$('html, body').animate({
+        scrollTop: $("#dock_worker_payment_end").offset().top
+    }, 1000);
