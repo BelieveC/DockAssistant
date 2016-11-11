@@ -1,2 +1,4 @@
-alert("hello");
 $('#dock_reports').html('<%= j render partial: "report",locals:{timeslots: @timeslots, dock: @dock,totaldays: @totaldays}%>').fadeIn();
+$('html,body').animate({
+	scrollTop: $("#dock_report_end").offset().top
+},1000);
