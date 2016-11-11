@@ -1,5 +1,5 @@
 class DockWorkersController < ApplicationController
-  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report,:payment]
+  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report,:payment,:make_payment]
 
   # GET /dock_workers
   # GET /dock_workers.json
@@ -92,6 +92,12 @@ class DockWorkersController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def make_payment
+    @dock_worker.last_payment_date = Date.yesterday
+    @dock_worker.save
+    return payment
   end
 
   private
