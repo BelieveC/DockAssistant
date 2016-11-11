@@ -86,9 +86,6 @@ class DockWorkersController < ApplicationController
     @timeslots = @dock_worker.timeslots.where(date: (@dock_worker.last_payment_date..Date.yesterday))
     @total_days = (Date.yesterday - @dock_worker.last_payment_date).to_i
     @payment_due = @timeslots.count* @dock_worker.pay_rate
-    puts @total_days 
-    puts @timeslots 
-    puts @payment_due
     respond_to do |format|
       format.js
     end
@@ -97,7 +94,12 @@ class DockWorkersController < ApplicationController
   def make_payment
     @dock_worker.last_payment_date = Date.yesterday
     @dock_worker.save
-    return payment
+    @timeslots = @dock_worker.timeslots.where(date: (@dock_worker.last_payment_date..Date.yesterday))
+    @total_days = (Date.yesterday - @dock_worker.last_payment_date).to_i
+    @payment_due = @timeslots.count* @dock_worker.pay_rate
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
