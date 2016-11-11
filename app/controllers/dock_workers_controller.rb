@@ -1,5 +1,5 @@
 class DockWorkersController < ApplicationController
-  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report]
+  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report,:payment]
 
   # GET /dock_workers
   # GET /dock_workers.json
@@ -25,6 +25,7 @@ class DockWorkersController < ApplicationController
   # POST /dock_workers.json
   def create
     @dock_worker = DockWorker.new(dock_worker_params)
+    @dock_worker.last_payment_date = Date.today
 
     respond_to do |format|
       if @dock_worker.save
@@ -76,6 +77,18 @@ class DockWorkersController < ApplicationController
     @totaldays = (@end_date - @start_date).to_i
     @timeslots = @dock_worker.timeslots.where(date: (@start_date..@end_date))
     puts @timeslots.count
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def payment
+    @timeslots = @dock_worker.timeslots.where(date: (@dock_worker.last_payment_date..Date.yesterday))
+    @total_days = (Date.yesterday - @dock_worker.last_payment_date).to_i
+    @payment_due = @timeslots.count* @dock_worker.pay_rate
+    puts @total_days 
+    puts @timeslots 
+    puts @payment_due
     respond_to do |format|
       format.js
     end
