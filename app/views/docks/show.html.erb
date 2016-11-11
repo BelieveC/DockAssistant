@@ -9,4 +9,16 @@
 	<%= link_to 'Edit', edit_dock_path(@dock) %> |
 	<%= link_to 'Back', docks_path %>
 
+	<h3>Genarate Reports</h3>
+
+	<%= simple_form_for(:report,{url: dock_report_path,method: :get,remote:true}) do |f| %>
+      <%= f.input :start_date,label:"Date",as: :date %>
+      <%= f.input :end_date,label:"Date",as: :date %>
+      <%= f.submit "Get Report" %>
+    <% end %>
+
+
+    <div id="dock_reports">
+    	
+    </div>
 </div>
