@@ -8,9 +8,10 @@
       <%= f.input :dock_id,label:"Dock",collection: Dock.all,prompt:"Select dock" %>
       <%= f.input :date,label:"Date",as: :date %>
       <%= f.input :time,as: :time,label:"Time",:minute_step=>60 %>
-      <%= f.submit "Check Availability" %>
+      <%= f.submit "Check Availability",class:"btn btn-success" %>
     <% end %>
   </div>
+  <br>
   <a id="display_appointment_form" class="btn btn-primary">Next</a>
 </div>
 

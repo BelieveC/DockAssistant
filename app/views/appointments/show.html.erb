@@ -1,35 +1,45 @@
-<div class="container">
-	<p id="notice"><%= notice %></p>
-
-	<p>
-	  <strong>Datetime:</strong>
-	  <%= @appointment.datetime %>
-	</p>
-
-	<p>
-	  <strong>Vendor:</strong>
-	  <%= @appointment.vendor.name %>
-	</p>
-	
-	<% @timeslot = @appointment.timeslot %>
-	<% if @timeslot.present? %>
-		<h3>Added Worker</h1>
-		<div id="added_worker_div">
-			<% @appointment.dock_workers.each do |worker| %>
-				<%= render partial: 'shared/remove_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment}%>
-			<% end %>
-		</div>	
-		<br><br>
-		<h3>Add Worker</h1>
-		<div id="add_worker_div">
-			<% DockWorker.all.each do |worker| %>
-				<% unless worker.timeslots.include?(@timeslot) %>
-					<p><%= render partial: 'shared/add_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment} %></p>
+<div class="container form_div">
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+    	<% if flash.any? %>
+	      <div class="alert alert-warning alert-dismissible" role="alert">
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %>
+	      </div>
+	    <% end %>
+      <h3>Appointment Info</h3>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info">DateTime: <%= @appointment.datetime %></li>
+        <li class="list-group-item list-group-item-info">Vendor:  <%= @appointment.vendor.name %></li>
+      </ul>
+      <%= link_to 'Edit',edit_appointment_path(@appointment),class: "btn btn-success" %>
+      <%= link_to 'Back',  appointments_path,class: "btn btn-success"  %>
+    </div>
+  </div>
+  <br><br>
+  <% @timeslot = @appointment.timeslot %>
+  <% if @timeslot.present? %>
+	  <div class="rows">
+	    <div class="col-md-10 col-md-offset-1">
+	    	<h3>Added Worker</h3>
+	    	<div id="added_worker_div">
+	    		<% @appointment.dock_workers.each do |worker| %>
+					<%= render partial: 'shared/remove_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment}%>
 				<% end %>
-			<% end %>
-		</div>
-	<% end %>
-	<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-	<%= link_to 'Back', appointments_path %>
-
+	   		 </div>
+	    </div>
+	  </div>
+	  <br><br>
+	  <div class="rows">
+	    <div class="col-md-10 col-md-offset-1">			
+	    	<h3>Add Worker</h3>
+	    	<div id="add_worker_div">
+	    		<% DockWorker.all.each do |worker| %>
+					<% unless worker.timeslots.include?(@timeslot) %>
+						<p><%= render partial: 'shared/add_worker',locals:{worker: worker,timeslot: @timeslot,appointment: @appointment} %></p>
+					<% end %>
+				<% end %>
+	    	</div>
+	    </div>
+	  </div>
+  <% end %>
 </div>
