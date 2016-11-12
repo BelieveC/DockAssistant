@@ -1,12 +1,19 @@
-<div class="container">
-	<p id="notice"><%= notice %></p>
-
-	<p>
-	  <strong>Name:</strong>
-	  <%= @vendor.name %>
-	</p>
-
-	<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-	<%= link_to 'Back', vendors_path %>
-
+<div class="container form_div">
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+      <% if flash.any? %>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %>
+        </div>
+      <% end %>
+      <h3>Vendor Info</h3>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info">Name:  <%=@vendor.name %></li>
+      </ul>
+      <%= link_to 'Edit', edit_vendor_path(@vendor),class: "btn btn-success" %>
+      <%= link_to 'Back', vendors_path,class: "btn btn-success"  %>
+    </div>
+  </div>
+  <br><br>
 </div>
+

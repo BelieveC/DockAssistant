@@ -1,9 +1,9 @@
-<div class="container">
+<div class="form_div container">
   <p id="notice"><%= notice %></p>
 
   <h1>Vendors</h1>
 
-  <table>
+  <table class="table table-striped table-bordered table-hover ">
     <thead>
       <tr>
         <th>Name</th>
@@ -15,9 +15,9 @@
       <% @vendors.each do |vendor| %>
         <tr>
           <td><%= vendor.name %></td>
-          <td><%= link_to 'Show', vendor %></td>
-          <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-          <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', vendor,class:"btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_vendor_path(vendor),class:"btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', vendor,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
