@@ -1,9 +1,9 @@
-<div class="container">
+<div class="form_div container">
   <p id="notice"><%= notice %></p>
 
   <h1>Docks</h1>
 
-  <table>
+  <table class="table table-striped table-bordered table-hover ">
     <thead>
       <tr>
         <th>Name</th>
@@ -15,9 +15,9 @@
       <% @docks.each do |dock| %>
         <tr>
           <td><%= dock.name %></td>
-          <td><%= link_to 'Show', dock %></td>
-          <td><%= link_to 'Edit', edit_dock_path(dock) %></td>
-          <td><%= link_to 'Destroy', dock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', dock,class:"btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_dock_path(dock),class:"btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', dock,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -32,8 +32,8 @@
          <h3>Generate Report</h3>
         <%= simple_form_for(:report,{url: dock_report_path,method: :get,remote:true}) do |f| %>
           <%= f.input :id,label: "Dock",collection: Dock.all,label_method: :name,value_method: :id,prompt: "Select Dock for report"%>
-          <%= f.input :start_date,label:"Date",as: :date %>
-          <%= f.input :end_date,label:"Date",as: :date %>
+          <%= f.input :start_date,label:"Start Date",as: :date %>
+          <%= f.input :end_date,label:"End Date",as: :date %>
           <%= f.submit "Get Report",class:"btn btn-danger" %>
         <% end %>
     </div>
