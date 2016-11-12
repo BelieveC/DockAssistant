@@ -49,17 +49,47 @@
 // }
 
 
-table, td, th {
-    border: 1px solid #000000;
-    text-align: left;
-}
+// table, td, th {
+//     border: 1px solid #000000;
+//     text-align: left;
+// }
 
-table {
-    width: 100%;
-}
+// table {
+//     width: 100%;
+// }
 
-th, td {
-    padding: 15px;
-}
+// th, td {
+//     padding: 15px;
+// }
 
 // tr:nth-child(even){background-color: lightsteelblue}
+
+.form_div{
+	background-color: white;
+	opacity: .85;
+	padding: 2em;
+	border-radius: 3%;
+}
+footer{
+	position: fixed;
+	height: 5em;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	border-radius: 3%;
+}
+.footer_component{
+	color: #777;
+}
+.footer_component a{
+	color: grey;
+	font-wieght: bold;
+}
+body{
+	 background: url("dockship") no-repeat 0px 0px !important;
+	 // color: white;
+// background: #1A2980; /* fallback for old browsers */
+// background: -webkit-linear-gradient(to left, #1A2980 , #26D0CE); Chrome 10-25, Safari 5.1-6
+// background: linear-gradient(to left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
