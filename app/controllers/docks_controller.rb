@@ -1,5 +1,5 @@
 class DocksController < ApplicationController
-  before_action :set_dock, only: [:show, :edit, :update, :destroy,:report]
+  before_action :set_dock, only: [:show, :edit, :update, :destroy]
 
   # GET /docks
   # GET /docks.json
@@ -59,6 +59,7 @@ class DocksController < ApplicationController
   end
 
   def report
+    @dock = Dock.find(params["report"]["id"])
     @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
     @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
     @totaldays = (@end_date - @start_date).to_i
