@@ -47,7 +47,7 @@
           <%= f.input :id,label:"Dock Worker",collection: DockWorker.all,label_method: :first_name,value_method: :id,prompt:"Select Dock Worker" %>
           <%= f.input :start_date,label:"Date",as: :date %>
           <%= f.input :end_date,label:"Date",as: :date %>
-          <%= f.submit "Get Report" %>
+          <%= f.submit "Get Report",class: "btn btn-danger" %>
         <% end %>
     </div>
     <div id="dock_reports"> </div>

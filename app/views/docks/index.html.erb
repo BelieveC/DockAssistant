@@ -34,7 +34,7 @@
           <%= f.input :id,label: "Dock",collection: Dock.all,label_method: :name,value_method: :id,prompt: "Select Dock for report"%>
           <%= f.input :start_date,label:"Date",as: :date %>
           <%= f.input :end_date,label:"Date",as: :date %>
-          <%= f.submit "Get Report" %>
+          <%= f.submit "Get Report",class:"btn btn-danger" %>
         <% end %>
     </div>
     <div id="dock_reports"></div>

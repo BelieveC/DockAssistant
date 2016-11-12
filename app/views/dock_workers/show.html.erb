@@ -23,7 +23,7 @@
           <%= f.input :id,as: :hidden,input_html:{value: @dock_worker.id}%>
           <%= f.input :start_date,label:"Date",as: :date %>
           <%= f.input :end_date,label:"Date",as: :date %>
-          <%= f.submit "Get Report" %>
+          <%= f.submit "Get Report",class:"btn btn-danger" %>
         <% end %>
     </div>
     <div id="dock_reports"> </div>
