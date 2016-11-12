@@ -1,5 +1,5 @@
 class DockWorkersController < ApplicationController
-  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:report,:payment,:make_payment]
+  before_action :set_dock_worker, only: [:show, :edit, :update, :archived, :destroy,:payment,:make_payment]
 
   # GET /dock_workers
   # GET /dock_workers.json
@@ -72,6 +72,7 @@ class DockWorkersController < ApplicationController
   end
 
   def report
+    @dock_worker = DockWorker.find(params["report"]["id"])
     @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
     @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
     @totaldays = (@end_date - @start_date).to_i
