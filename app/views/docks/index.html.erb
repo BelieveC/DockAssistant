@@ -27,4 +27,17 @@
 
   <%= link_to 'New Dock', new_dock_path,class:"btn btn-primary"  %>
 
+  <div class="rows">
+    <div class="col-md-10 col-md-offset-1">
+         <h3>Generate Report</h3>
+        <%= simple_form_for(:report,{url: dock_report_path,method: :get,remote:true}) do |f| %>
+          <%= f.input :id,label: "Dock",collection: Dock.all,label_method: :name,value_method: :id,prompt: "Select Dock for report"%>
+          <%= f.input :start_date,label:"Date",as: :date %>
+          <%= f.input :end_date,label:"Date",as: :date %>
+          <%= f.submit "Get Report" %>
+        <% end %>
+    </div>
+    <div id="dock_reports"></div>
+    <div id="dock_report_end"></div>
+  </div>
 </div>
