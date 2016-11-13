@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.paginate(page: params[:page],per_page: 10)
+    @appointments = Appointment.order("created_at DESC").paginate(page: params[:page],per_page: 10)
   end
 
   # GET /appointments/1

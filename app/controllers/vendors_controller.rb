@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.paginate(page: params[:page],per_page: 10)
+    @vendors = Vendor.order("created_at DESC").paginate(page: params[:page],per_page: 10)
   end
 
   # GET /vendors/1

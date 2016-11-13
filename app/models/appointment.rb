@@ -5,4 +5,5 @@ class Appointment < ApplicationRecord
   has_many :dock_workers, :through => :shipments
   belongs_to :dock
 
+  
 end
