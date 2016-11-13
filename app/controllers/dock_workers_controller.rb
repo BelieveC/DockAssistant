@@ -4,7 +4,7 @@ class DockWorkersController < ApplicationController
   # GET /dock_workers
   # GET /dock_workers.json
   def index
-    @dock_workers = DockWorker.where.not(archived: true)
+    @dock_workers = DockWorker.where.not(archived: true).paginate(page: params[:page],per_page: 5)
   end
 
   # GET /dock_workers/1
