@@ -103,6 +103,31 @@ class DockWorkersController < ApplicationController
     end
   end
 
+  def avg_payroll
+    @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
+    @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
+    @totaldays = (@end_date - @start_date).to_i
+    @timeslots = Timeslot.all.where(date: (@start_date..@end_date))
+    @total_appointments = 0
+    @total_payroll = 0
+    @timeslots.each do |timeslot|
+      @total_appointments = @total_appointments + timeslot.appointments.count
+      timeslot.dock_workers.each do |dock_worker|
+        @total_payroll = @total_payroll + dock_worker.pay_rate
+      end
+    end
+    if @total_appointments != 0
+      @avg_payroll = @total_payroll/@total_appointments
+    else
+      @avg_payroll = 0
+    end
+    respond_to do |format|
+      format.js
+    end
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dock_worker
