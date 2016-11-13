@@ -1,2 +1,0 @@
-class DockSchedulesController < ApplicationController
-end
