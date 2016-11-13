@@ -41,7 +41,7 @@
   <%= link_to 'New Dock Worker', new_dock_worker_path,class:"btn btn-primary"  %>
 
   <div class="rows">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-5 col-md-offset-1">
         <h3>Generate Report</h3>
         <%= simple_form_for(:report,{url: dock_worker_report_path,method: :get,remote:true}) do |f| %>
           <%= f.input :id,label:"Dock Worker",collection: DockWorker.all,label_method: :first_name,value_method: :id,prompt:"Select Dock Worker" %>
@@ -50,8 +50,18 @@
           <%= f.submit "Get Report",class: "btn btn-danger" %>
         <% end %>
     </div>
+    <div class="col-md-5 col-md-offset-1">
+        <h3>Average worker payroll per appointment</h3>
+        <%= simple_form_for(:report,{url:avg_payroll_path,method: :get,remote:true}) do |f| %>
+          <%= f.input :start_date,label:"Start Date",as: :date %>
+          <%= f.input :end_date,label:"End Date",as: :date %>
+          <%= f.submit "Get Avg Payroll",class: "btn btn-danger" %>
+        <% end %>
+    </div>
     <div id="dock_reports"> </div>
-    <div id="dock_worker_report_end"></div>
+      <div id="dock_worker_report_end"></div>
+    <div id="average_payroll"></div>
+    <div id="average_payroll_end"></div>
   </div>
   <div id="dock_worker_payment"></div>
   <div id="dock_worker_payment_end"></div>
