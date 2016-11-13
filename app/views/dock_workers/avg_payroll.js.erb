@@ -1,0 +1,4 @@
+$("#average_payroll").fadeOut().html('<%= j render partial: "avg_payroll",locals:{total_appointments: @total_appointments,total_payroll: @total_payroll,total_days: @total_days,avg_payroll: @avg_payroll}%>').fadeIn();
+$('html, body').animate({
+        scrollTop: $("#average_payroll_end").offset().top
+    }, 1000);
