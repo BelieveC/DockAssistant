@@ -1,91 +1,101 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-DockWorker.delete_all
-Shipment.delete_all
-Dock.delete_all
-Vendor.delete_all
-State.delete_all
-Appointment.delete_all
-Reservation.delete_all
-
-dock_names = ['Dock 1', 'Dock 2', 'Dock 3', 'Dock 4', 'Dock 5', 'Dock 6']
-vendor_names = ['Vendor 1', 'Vendor 2', 'Vendor 3', 'Vendor 4', 'Vendor 5', 'Vendor 6']
-
-state_names = [
-    "Alabama",
-    "Alaska",
-    "Arizona",
-    "Arkansas",
-    "California",
-    "Colorado",
-    "Connecticut",
-    "Delaware",
-    "Florida",
-    "Georgia",
-    "Hawaii",
-    "Idaho",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Kansas",
-    "Kentucky",
-    "Louisiana",
-    "Maine",
-    "Maryland",
-    "Massachusetts",
-    "Michigan",
-    "Minnesota",
-    "Mississippi",
-    "Missouri",
-    "Montana",
-    "Nebraska",
-    "Nevada",
-    "New Hampshire",
-    "New Jersey",
-    "New Mexico",
-    "New York",
-    "North Carolina",
-    "North Dakota",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Pennsylvania",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming",
-
-]
-
-
-docks = []
-vendors = []
-states = []
-
-
-dock_names.each do |dock_name|
-  docks << Dock.create(name: dock_name)
-end
-
-vendor_names.each do |vendor_name|
-  vendors << Vendor.create(name: vendor_name)
-end
-
-state_names.each do |state_name|
-  states << State.create(name: state_name)
-end
+Dock.create("name"=>"Dock1")
+Dock.create("name"=>"Sinhgad")
+Dock.create("name"=>"Mumbai")
+Dock.create("name"=>"Navi Mumbai")
+DockWorker.create("last_name"=>"John", "first_name"=>"Doe", "address"=>"Palo Alto", "state_id"=>1, "zipcode"=>"45782", "pay_rate"=>487542.0, "archived"=>false, "last_payment_date"=>Fri, 11 Nov 2016)
+DockWorker.create("last_name"=>"Kevin", "first_name"=>"Hart", "address"=>"New York", "state_id"=>1, "zipcode"=>"4545454", "pay_rate"=>5454545.0, "archived"=>false, "last_payment_date"=>Thu, 10 Nov 2016)
+DockWorker.create("last_name"=>"Gosling", "first_name"=>"Ryan", "address"=>"Los Angelos", "state_id"=>1, "zipcode"=>"211012", "pay_rate"=>45.0, "archived"=>false, "last_payment_date"=>Fri, 11 Nov 2016)
+DockWorker.create("last_name"=>"John ", "first_name"=>"Doe", "address"=>"Los Angelos, LA", "state_id"=>2, "zipcode"=>"45455454", "pay_rate"=>1254.0, "archived"=>false, "last_payment_date"=>Sun, 13 Nov 2016)
+State.create("name"=>"California")
+State.create("name"=>"Los Angelos")
+State.create("name"=>"Broklyn")
+Vendor.create("name"=>"Cosmos Supplier")
+Vendor.create("name"=>"XYZ")
+Appointment.create("datetime"=>Sat, 05 Nov 2016 12:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Ginger", "dock_id"=>1, "timeslot_id"=>26)
+Appointment.create("datetime"=>Sat, 05 Nov 2016 14:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"BayWatch", "dock_id"=>nil, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 06:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"", "dock_id"=>nil, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 06:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"", "dock_id"=>nil, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 09:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Wonderland", "dock_id"=>nil, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 10:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Wed, 06 Apr 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Wed, 06 Jul 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Wed, 06 Jul 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Fri, 06 May 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Tue, 06 Sep 2016 03:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Heroku", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Mon, 07 Nov 2016 04:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Scientist", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Mon, 07 Nov 2016 04:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Scientist2", "dock_id"=>1, "timeslot_id"=>nil)
+Appointment.create("datetime"=>Fri, 06 May 2016 13:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"BayWatch2", "dock_id"=>1, "timeslot_id"=>28)
+Appointment.create("datetime"=>Fri, 06 May 2016 13:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"BayWatch2", "dock_id"=>1, "timeslot_id"=>28)
+Appointment.create("datetime"=>Fri, 06 May 2016 13:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"BayWatch2", "dock_id"=>1, "timeslot_id"=>28)
+Appointment.create("datetime"=>Sun, 06 Nov 2016 14:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Enigma", "dock_id"=>1, "timeslot_id"=>30)
+Appointment.create("datetime"=>Tue, 06 Dec 2016 14:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"", "dock_id"=>1, "timeslot_id"=>31)
+Appointment.create("datetime"=>Tue, 06 Dec 2016 01:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"HajiAli", "dock_id"=>3, "timeslot_id"=>33)
+Appointment.create("datetime"=>Fri, 18 Nov 2016 08:00:00 UTC +00:00, "vendor_id"=>1, "name"=>"Crocky Foods", "dock_id"=>1, "timeslot_id"=>44)
+DockSchedule.create("dock_id"=>1, "timeslot_id"=>44)
+Shipment.create("dock_worker_id"=>3, "appointment_id"=>20)
+Shipment.create("dock_worker_id"=>2, "appointment_id"=>20)
+Shipment.create("dock_worker_id"=>2, "appointment_id"=>19)
+Shipment.create("dock_worker_id"=>1, "appointment_id"=>19)
+Shipment.create("dock_worker_id"=>1, "appointment_id"=>1)
+Shipment.create("dock_worker_id"=>2, "appointment_id"=>1)
+Shipment.create("dock_worker_id"=>3, "appointment_id"=>1)
+Shipment.create("dock_worker_id"=>1, "appointment_id"=>21)
+Shipment.create("dock_worker_id"=>2, "appointment_id"=>21)
+Shipment.create("dock_worker_id"=>3, "appointment_id"=>21)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>Thu, 10 Nov 2016, "time"=>2000-01-01 23:00:00 UTC)
+Timeslot.create("date"=>Thu, 10 Nov 2016, "time"=>2000-01-01 23:00:00 UTC)
+Timeslot.create("date"=>Wed, 02 Nov 2016, "time"=>2000-01-01 23:00:00 UTC)
+Timeslot.create("date"=>Wed, 02 Nov 2016, "time"=>2000-01-01 22:00:00 UTC)
+Timeslot.create("date"=>Wed, 02 Nov 2016, "time"=>2000-01-01 21:00:00 UTC)
+Timeslot.create("date"=>Thu, 03 Nov 2016, "time"=>2000-01-01 23:59:00 UTC)
+Timeslot.create("date"=>Thu, 03 Nov 2016, "time"=>2000-01-01 02:59:00 UTC)
+Timeslot.create("date"=>Thu, 03 Nov 2016, "time"=>2000-01-01 04:59:00 UTC)
+Timeslot.create("date"=>Thu, 03 Nov 2016, "time"=>2000-01-01 23:00:00 UTC)
+Timeslot.create("date"=>Thu, 03 Nov 2016, "time"=>2000-01-01 22:00:00 UTC)
+Timeslot.create("date"=>Thu, 10 Nov 2016, "time"=>2000-01-01 21:00:00 UTC)
+Timeslot.create("date"=>nil, "time"=>nil)
+Timeslot.create("date"=>Sat, 02 Apr 2016, "time"=>2000-01-01 23:00:00 UTC)
+Timeslot.create("date"=>Tue, 06 Sep 2016, "time"=>2000-01-01 03:00:00 UTC)
+Timeslot.create("date"=>Tue, 06 Sep 2016, "time"=>2000-01-01 03:00:00 UTC)
+Timeslot.create("date"=>Mon, 07 Nov 2016, "time"=>2000-01-01 04:00:00 UTC)
+Timeslot.create("date"=>Mon, 07 Nov 2016, "time"=>2000-01-01 04:00:00 UTC)
+Timeslot.create("date"=>Tue, 01 Nov 2016, "time"=>2000-01-01 22:00:00 UTC)
+Timeslot.create("date"=>Fri, 06 May 2016, "time"=>2000-01-01 13:00:00 UTC)
+Timeslot.create("date"=>Thu, 17 Nov 2016, "time"=>2000-01-01 22:00:00 UTC)
+Timeslot.create("date"=>Sun, 06 Nov 2016, "time"=>2000-01-01 14:00:00 UTC)
+Timeslot.create("date"=>Tue, 06 Dec 2016, "time"=>2000-01-01 14:00:00 UTC)
+Timeslot.create("date"=>Sat, 05 Nov 2016, "time"=>2000-01-01 12:00:00 UTC)
+Timeslot.create("date"=>Tue, 06 Dec 2016, "time"=>2000-01-01 01:00:00 UTC)
+Timeslot.create("date"=>Tue, 06 Dec 2016, "time"=>2000-01-01 02:00:00 UTC)
+Timeslot.create("date"=>Thu, 10 Nov 2016, "time"=>2000-01-01 00:59:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 08:08:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 17:17:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 10:10:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 15:15:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 18:18:00 UTC)
+Timeslot.create("date"=>Sun, 13 Nov 2016, "time"=>2000-01-01 08:00:00 UTC)
+Timeslot.create("date"=>Thu, 10 Nov 2016, "time"=>2000-01-01 08:00:00 UTC)
+Timeslot.create("date"=>Mon, 14 Nov 2016, "time"=>2000-01-01 08:00:00 UTC)
+Timeslot.create("date"=>Fri, 18 Nov 2016, "time"=>2000-01-01 08:00:00 UTC)
+Timeslot.create("date"=>Fri, 11 Nov 2016, "time"=>2000-01-01 08:00:00 UTC)
+Timeslot.create("date"=>nil, "time"=>2000-01-01 16:16:00 UTC)
+WorkerSchedule.create("dock_worker_id"=>3, "timeslot_id"=>33)
+WorkerSchedule.create("dock_worker_id"=>2, "timeslot_id"=>33)
+WorkerSchedule.create("dock_worker_id"=>2, "timeslot_id"=>31)
+WorkerSchedule.create("dock_worker_id"=>1, "timeslot_id"=>31)
+WorkerSchedule.create("dock_worker_id"=>1, "timeslot_id"=>26)
+WorkerSchedule.create("dock_worker_id"=>2, "timeslot_id"=>26)
+WorkerSchedule.create("dock_worker_id"=>3, "timeslot_id"=>26)
+WorkerSchedule.create("dock_worker_id"=>1, "timeslot_id"=>44)
+WorkerSchedule.create("dock_worker_id"=>2, "timeslot_id"=>44)
+WorkerSchedule.create("dock_worker_id"=>3, "timeslot_id"=>44)
