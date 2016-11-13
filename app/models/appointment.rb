@@ -5,5 +5,12 @@ class Appointment < ApplicationRecord
   has_many :dock_workers, :through => :shipments
   belongs_to :dock
 
+  validates :datetime, presence: true,
+  					   inclusion: {in: (Date.today..Date.today+5.years),message: "date should be in future"}
+  validates :name, presence: true,
+  					length:{minimum: 5}
+  validates :vendor_id,presence: true
+  validates :dock_id, presence: true
+  validates :timeslot_id,presence: true
   
 end
