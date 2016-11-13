@@ -4,7 +4,7 @@ class StatesController < ApplicationController
   # GET /states
   # GET /states.json
   def index
-    @states = State.all
+    @states = State.paginate(page: params[:page],per_page: 10)
   end
 
   # GET /states/1
