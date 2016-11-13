@@ -4,7 +4,7 @@ class DocksController < ApplicationController
   # GET /docks
   # GET /docks.json
   def index
-    @docks = Dock.all
+    @docks = Dock.paginate(page: params[:page],per_page: 10)
   end
 
   def show
