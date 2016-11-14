@@ -5,43 +5,44 @@ class AppointmentTest < ActiveSupport::TestCase
   #   assert true
   # end
   setup do
-  	@appointment = Appointment.new
+  	@appointment = appointments(:completely_valid)
   end
 
   test "appointment should not save without name" do
   	@appointment.name = nil
-  	@appointment.vendor_id = 1
-  	@appointment.dock_id = 1
-  	@appointment.timeslot_id = 1
-  	@appointment.datetime = DateTime.now +10.days
-  	assert_not @appointment.save
+  	assert_not @appointment.valid?,"Appointment without name is accepted"
   end	
 
   test "appointment name should be atleast 5 character" do
-  	@appointment.vendor_id = 1
-  	@appointment.dock_id = 1
-  	@appointment.timeslot_id = 1
-  	@appointment.datetime = Date.today+10.days
   	@appointment.name = "1234"
-  	assert_not @appointment.save
+  	assert_not @appointment.valid?,"Appointment with name less than 5 character is accepted"
   end
 
   test "appointment name should be unique" do
-  	@appointment.vendor_id = 1
-  	@appointment.dock_id = 1
-  	@appointment.timeslot_id = 1
-  	@appointment.datetime = Date.today+10.days
-  	@appointment.name = "Recommend"
   	@appointment.save
-
-  	@appointment2 = Appointment.new
-  	@appointment2.name = "Recommend"
-  	@appointment.vendor_id = 1
-  	@appointment.dock_id = 1
-  	@appointment.timeslot_id = 1
-  	@appointment.datetime = Date.today+10.days
-  	assert_not @appointment2.save
+    @appointment2 = appointments(:one)
+    @appointment2.name = "LetsSing"
+    assert_not @appointment2.valid?,"Appointment without unique name is accepted"
   end
 
+  test "timeslot_id should be present" do
+    @appointment.timeslot_id = nil
+    assert_not @appointment.valid?,"Appointment without timeslot_id is accepted"
+  end
+
+  test "vendor_id should be present" do
+    @appointment.vendor_id = nil
+    assert_not @appointment.valid?,"Appointment without vendor_id is accepted"
+  end
+
+  test "dock_id should be present" do
+    @appointment.dock_id = nil
+    assert_not @appointment.valid?,"Appointment without dock_id is accepted"
+  end
+
+  test "dateshould should be in future" do
+    @appointment.datetime = DateTime.yesterday
+    assert_not @appointment.valid?,"Appointment with date in past is accepted"
+  end
 
 end
