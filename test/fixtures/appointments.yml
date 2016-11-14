@@ -6,6 +6,14 @@ one:
   dock_id: 1
   vendor: one
   name: AaogeTumKabhi
+
+completely_valid:
+  datetime: 2018-11-03 20:32:58
+  vendor_id: 1
+  dock_id: 1
+  vendor: one
+  dock: one
+  name: LetsSing
   
 two:
   datetime: 2019-11-03 20:32:58
