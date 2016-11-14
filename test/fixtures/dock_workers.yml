@@ -1,19 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  last_name: MyString
-  first_name: MyString
-  address: MyString
+  last_name: Clarke
+  first_name: Michael
+  address: Sanpada(e), Navi Mumbai
   state_id: 1
-  zipcode: MyString
-  pay_rate: 1.5
+  zipcode: 25974615
+  pay_rate: 145
   archived: false
+  state: one
 
 two:
-  last_name: MyString
-  first_name: MyString
-  address: MyString
+  last_name: Angelina   
+  first_name: Sharma  
+  address: Sanpada(e), Navi Mumbai
   state_id: 1
-  zipcode: MyString
+  zipcode: 4545546289
   pay_rate: 1.5
   archived: false
+  state: one
