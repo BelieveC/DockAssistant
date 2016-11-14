@@ -25,7 +25,7 @@ class DockWorkersController < ApplicationController
   # POST /dock_workers.json
   def create
     @dock_worker = DockWorker.new(dock_worker_params)
-    @dock_worker.last_payment_date = Date.today
+    @dock_worker.last_payment_date = Date.yesterday
 
     respond_to do |format|
       if @dock_worker.save
