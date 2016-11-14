@@ -10,6 +10,16 @@ one:
   archived: false
   state: one
 
+completely_valid:
+  last_name: Dwayne
+  first_name: Johnson
+  address: Sanpada(e), Navi Mumbai
+  state_id: 1
+  zipcode: 25974615
+  pay_rate: 145
+  archived: false
+  state: one
+
 two:
   last_name: Angelina   
   first_name: Sharma  
