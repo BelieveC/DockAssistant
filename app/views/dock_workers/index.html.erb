@@ -7,7 +7,7 @@
 <div class="rows">
   <div class="col-md-12">
     <h2>Dock Workers</h2>
-    <table class="table table-striped table-bordered table-hover ">
+    <table class="table table-striped table-hover ">
       <thead>
         <tr>
           <th>Last name</th>
@@ -24,17 +24,17 @@
       <tbody>
         <% @dock_workers.each do |dock_worker| %>
           <tr>
-            <td><%= dock_worker.last_name %></td>
-            <td><%= dock_worker.first_name %></td>
-            <td><%= dock_worker.address %></td>
-            <td><%= dock_worker.state.try(:name)%></td>
-            <td><%= dock_worker.zipcode %></td>
-            <td><%= dock_worker.pay_rate %></td>
+            <td class="table-tr"><%= dock_worker.last_name %></td>
+            <td class="table-tr"><%= dock_worker.first_name %></td>
+            <td class="table-tr"><%= dock_worker.address %></td>
+            <td class="table-tr"><%= dock_worker.state.try(:name)%></td>
+            <td class="table-tr"><%= dock_worker.zipcode %></td>
+            <td class="table-tr"><%= dock_worker.pay_rate %></td>
             <!--<td><%= dock_worker.archived %></td>-->
-            <td><%= link_to 'Show', dock_worker,class:"btn btn-success" %></td>
-            <td><%= link_to 'Edit', edit_dock_worker_path(dock_worker),class:"btn btn-warning" %></td>
-            <td><%= link_to 'Salary Dues', dock_worker_payment_path(dock_worker),class:"btn btn-primary",remote: true %></td>
-            <td><%= link_to 'Destroy', dock_worker,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', dock_worker,class:"btn btn-raised btn-success btn-sm table-btn" %></td>
+            <td><%= link_to 'Edit', edit_dock_worker_path(dock_worker),class:"btn btn-raised btn-warning btn-sm table-btn" %></td>
+            <td><%= link_to 'Salary Dues', dock_worker_payment_path(dock_worker),class:"btn btn-raised btn-primary btn-sm table-btn",remote: true %></td>
+            <td><%= link_to 'Destroy', dock_worker,class:"btn btn-raised btn-danger btn-sm table-btn", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -42,7 +42,7 @@
 
     <br>
 
-    <%= link_to 'New Dock Worker', new_dock_worker_path,class:"btn btn-primary"  %>
+    <%= link_to 'New Dock Worker', new_dock_worker_path,class:"btn btn-raised btn-primary"  %>
   </div>
   <div class="col-md-4 col-md-offset-4">
     <%= will_paginate %>
@@ -57,7 +57,7 @@
           <%= f.input :id,label:"Dock Worker",collection: DockWorker.all,label_method: :first_name,value_method: :id,prompt:"Select Dock Worker" %>
           <%= f.input :start_date,label:"Start Date",as: :date %>
           <%= f.input :end_date,label:"End Date",as: :date %>
-          <%= f.submit "Get Report",class: "btn btn-danger" %>
+          <%= f.submit "Get Report",class: "btn btn-raised btn-danger" %>
         <% end %>
     </div>
     <div class="col-md-5 col-md-offset-1">
@@ -65,7 +65,7 @@
         <%= simple_form_for(:report,{url:avg_payroll_path,method: :get,remote:true}) do |f| %>
           <%= f.input :start_date,label:"Start Date",as: :date %>
           <%= f.input :end_date,label:"End Date",as: :date %>
-          <%= f.submit "Get Avg Payroll",class: "btn btn-danger" %>
+          <%= f.submit "Get Avg Payroll",class: "btn btn-raised btn-danger" %>
         <% end %>
     </div>
     <div id="dock_reports"> </div>

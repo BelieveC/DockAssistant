@@ -10,8 +10,8 @@
       <ul class="list-group">
         <li class="list-group-item list-group-item-info">Name: <%= @dock.name %></li>
       </ul>
-      <%= link_to 'Edit', edit_dock_path(@dock),class: "btn btn-success" %>
-      <%= link_to 'Back', dock_workers_path,class: "btn btn-success"  %>
+      <%= link_to 'Edit', edit_dock_path(@dock),class: "btn btn-raised btn-success" %>
+      <%= link_to 'Back', dock_workers_path,class: "btn btn-raised btn-success"  %>
     </div>
   </div>
   <br><br>
@@ -22,7 +22,7 @@
         <%= f.input :id,as: :hidden,input_html:{value: @dock.id}%>
 	      <%= f.input :start_date,label:"Date",as: :date %>
 	      <%= f.input :end_date,label:"Date",as: :date %>
-	      <%= f.submit "Get Report",class:"btn btn-danger" %>
+	      <%= f.submit "Get Report",class:"btn btn-raised btn-danger" %>
 	    <% end %>
     </div>
      <div id="dock_reports"></div>

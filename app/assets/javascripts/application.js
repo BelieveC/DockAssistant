@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
+$.material.init();
 $(document).on('turbolinks:load',function(){
 	$('#display_appointment_form').on('click',function(){
 		$("#availability_form").fadeOut(function(){

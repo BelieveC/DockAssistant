@@ -15,8 +15,8 @@
         <li class="list-group-item list-group-item-info">Zipcode: <%= @dock_worker.zipcode %></li>
         <li class="list-group-item list-group-item-info">Pay rate: <%= @dock_worker.pay_rate %>/hrs</li>
       </ul>
-      <%= link_to 'Edit', edit_dock_worker_path(@dock_worker),class: "btn btn-success" %>
-      <%= link_to 'Back', dock_workers_path,class: "btn btn-success"  %>
+      <%= link_to 'Edit', edit_dock_worker_path(@dock_worker),class: "btn btn-raised btn-success" %>
+      <%= link_to 'Back', dock_workers_path,class: "btn  btn-raised btn-success"  %>
     </div>
   </div>
   <br><br>
@@ -27,7 +27,7 @@
           <%= f.input :id,as: :hidden,input_html:{value: @dock_worker.id}%>
           <%= f.input :start_date,label:"Date",as: :date %>
           <%= f.input :end_date,label:"Date",as: :date %>
-          <%= f.submit "Get Report",class:"btn btn-danger" %>
+          <%= f.submit "Get Report",class:"btn btn-raised btn-danger" %>
         <% end %>
     </div>
     <div id="dock_reports"> </div>
@@ -36,7 +36,7 @@
   <div class="rows">
     <div class="col-md-10 col-md-offset-1">
       <h3></h3>
-      <%= link_to "Generate Due Payment",dock_worker_payment_path,class: "btn btn-success",remote: true %>
+      <%= link_to "Generate Due Payment",dock_worker_payment_path,class: "btn btn-raised btn-success",remote: true %>
       <br>
     </div>
     <div id="dock_worker_payment"></div>
