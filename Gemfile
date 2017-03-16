@@ -11,6 +11,7 @@ end
 group :development do
 	gem 'sqlite3'
 end
+gem 'rqrcode-with-patches', '~> 0.5.4'
 #Documentation
 gem 'rdoc', '~> 5.0'
 # Use Puma as the app server

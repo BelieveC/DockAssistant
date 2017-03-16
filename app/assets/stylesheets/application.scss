@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -91,7 +91,7 @@ body{
 // background: #1A2980; /* fallback for old browsers */
 // background: -webkit-linear-gradient(to left, #1A2980 , #26D0CE); Chrome 10-25, Safari 5.1-6
 // background: linear-gradient(to left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        
+
 }
 
 .table-tr{
@@ -103,3 +103,39 @@ body{
 .navbar-inverse{
 	border-color: dark-blue;
 }
+
+table.qr-code {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+table.qr-code td {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+table.qr-code td.black { background-color: #000; }
+table.qr-code td.white { background-color: #fff; }
+
+.btn{
+	color: white !important;
+}
+.navbar-inverse .navbar-nav > li > a{
+	color: white !important;
+	font-weight: bold !important;
+}
+.form-group label.control-label {
+	color: black;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+input[placeholder]{
+	color: white !important;
+}
+

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>New QrCode</h1>
+
+      <%= simple_form_for(:qr_code, url: qr_codes_path ) do |f| %>
+        <%= f.input :text,placeholder:"Enter Text for Qrcode" %>
+        <%= f.submit class:"btn btn-success"  %>
+      <% end %>
+
+      <br>
+      <%= link_to 'Back', docks_path,class:"btn btn-danger"  %>
+
+    </div>
+  </div>
+</div>

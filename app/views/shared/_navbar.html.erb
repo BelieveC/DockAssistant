@@ -10,12 +10,13 @@
       </button>
 
      <%= link_to root_path,class:"navbar-brand" do %>
-         <%= link_to (image_tag "icon.png",id:"brand-image"),root_path %> 
+         <%= link_to (image_tag "icon.png",id:"brand-image"),root_path %>
      <% end %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Qrcode", new_qr_code_path %></li>
         <li><%= link_to 'Vendor',vendors_path %></li>
         <li><%= link_to 'Appointment', appointments_path %></li>
         <li><%= link_to 'Dock Worker', dock_workers_path %></li>
