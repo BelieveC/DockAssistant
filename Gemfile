@@ -12,6 +12,8 @@ group :development do
 	gem 'sqlite3'
 end
 gem 'rqrcode-with-patches', '~> 0.5.4'
+gem 'prawn-rails'
+gem 'prawn-qrcode'
 #Documentation
 gem 'rdoc', '~> 5.0'
 # Use Puma as the app server

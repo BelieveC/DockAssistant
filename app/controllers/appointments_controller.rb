@@ -1,3 +1,4 @@
+require 'prawn/qrcode'
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +11,16 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        @qr = RQRCode::QRCode.new("#{@appointment.datetime} #{@appointment.vendor.name}", level: :h, size: 20)
+        pdf = AppointmentPdf.new(@appointment, @qr, view_context)
+        send_data pdf.render, filename:
+        "appointment_#{@appointment.created_at.strftime("%d/%m/%Y")}.pdf",
+        type: "application/pdf", dispostion: 'inline'
+      end
+    end
   end
   # GET /appointments/new
   def new
@@ -27,7 +38,7 @@ class AppointmentsController < ApplicationController
       redirect_to :back, notice: "Select Dock"
     else
       puts params[:appointment][:dock_id].length
-      @date = Date.new params["appointment"]["datetime(1i)"].to_i,params["appointment"]["datetime(2i)"].to_i,params["appointment"]["datetime(3i)"].to_i   
+      @date = Date.new params["appointment"]["datetime(1i)"].to_i,params["appointment"]["datetime(2i)"].to_i,params["appointment"]["datetime(3i)"].to_i
       @dock = Dock.find(params[:appointment][:dock_id])
       @time = "2000-01-01 "+ params["appointment"]["datetime(4i)"] + ":" + params["appointment"]["datetime(5i)"] +":00"
       @timeslot = Timeslot.where(date: @date, time: @time).first_or_create

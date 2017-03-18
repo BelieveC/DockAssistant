@@ -11,7 +11,7 @@
 				<li class="list-group-item list-group-item-success">Total Worked Hours: <%= timeslots.count %></li>
 				<li class="list-group-item list-group-item-success">Pay Rate per Hour: <%= @dock_worker.pay_rate %></li>
 				<li class="list-group-item list-group-item-success">Total Due Salary: <%= payment_due %> $</li>
-				<li class="list-group-item"><%= link_to "Mark as Due Cleared",make_payment_path,class:"btn btn-default",remote: true %></li>
+				<li class="list-group-item"><%= link_to "Mark as Due Cleared",make_payment_path,class:"btn btn-primary",remote: true %></li>
 			</ul>
 		</div>
 	</div>
