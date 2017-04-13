@@ -5,40 +5,40 @@ class DocksControllerTest < ActionDispatch::IntegrationTest
     @dock = docks(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get docks_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_dock_url
     assert_response :success
   end
 
-  test "should create dock" do
+  test 'should create dock' do
     assert_difference('Dock.count') do
-      post docks_url, params: { dock: { name: "Boston" } }
+      post docks_url, params: { dock: { name: 'Boston' } }
     end
 
     assert_redirected_to dock_url(Dock.last)
   end
 
-  test "should show dock" do
+  test 'should show dock' do
     get dock_url(@dock)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_dock_url(@dock)
     assert_response :success
   end
 
-  test "should update dock" do
+  test 'should update dock' do
     patch dock_url(@dock), params: { dock: { name: @dock.name } }
     assert_redirected_to dock_url(@dock)
   end
 
-  test "should destroy dock" do
+  test 'should destroy dock' do
     assert_difference('Dock.count', -1) do
       delete dock_url(@dock)
     end

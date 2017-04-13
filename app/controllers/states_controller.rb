@@ -4,13 +4,14 @@ class StatesController < ApplicationController
   # GET /states
   # GET /states.json
   def index
-    @states = State.order("created_at DESC").paginate(page: params[:page],per_page: 10)
+    @states = State.order('created_at DESC').paginate(
+      page: params[:page], per_page: 10
+    )
   end
 
   # GET /states/1
   # GET /states/1.json
-  def show
-  end
+  def show; end
 
   # GET /states/new
   def new
@@ -18,8 +19,7 @@ class StatesController < ApplicationController
   end
 
   # GET /states/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /states
   # POST /states.json
@@ -28,11 +28,17 @@ class StatesController < ApplicationController
 
     respond_to do |format|
       if @state.save
-        format.html { redirect_to @state, notice: 'State was successfully created.' }
+        format.html do
+          redirect_to @state,
+                      notice: 'State was successfully created.'
+        end
         format.json { render :show, status: :created, location: @state }
       else
         format.html { render :new }
-        format.json { render json: @state.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @state.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -42,11 +48,17 @@ class StatesController < ApplicationController
   def update
     respond_to do |format|
       if @state.update(state_params)
-        format.html { redirect_to @state, notice: 'State was successfully updated.' }
+        format.html do
+          redirect_to @state,
+                      notice: 'State was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @state }
       else
         format.html { render :edit }
-        format.json { render json: @state.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @state.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -56,19 +68,24 @@ class StatesController < ApplicationController
   def destroy
     @state.destroy
     respond_to do |format|
-      format.html { redirect_to states_url, notice: 'State was successfully destroyed.' }
+      format.html do
+        redirect_to states_url,
+                    notice: 'State was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_state
-      @state = State.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def state_params
-      params.require(:state).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_state
+    @state = State.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def state_params
+    params.require(:state).permit(:name)
+  end
 end

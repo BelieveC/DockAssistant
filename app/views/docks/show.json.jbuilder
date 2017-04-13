@@ -1,1 +1,1 @@
-json.partial! "docks/dock", dock: @dock
+json.partial! 'docks/dock', dock: @dock

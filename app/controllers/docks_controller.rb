@@ -4,19 +4,19 @@ class DocksController < ApplicationController
   # GET /docks
   # GET /docks.json
   def index
-    @docks = Dock.order("created_at DESC").paginate(page: params[:page],per_page: 10)
+    @docks = Dock.order('created_at DESC').paginate(
+      page: params[:page], per_page: 10
+    )
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @dock = Dock.new
   end
 
   # GET /docks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /docks
   # POST /docks.json
@@ -25,7 +25,10 @@ class DocksController < ApplicationController
 
     respond_to do |format|
       if @dock.save
-        format.html { redirect_to @dock, notice: 'Dock was successfully created.' }
+        format.html do
+          redirect_to @dock, notice:
+          'Dock was successfully created.'
+        end
         format.json { render :show, status: :created, location: @dock }
       else
         format.html { render :new }
@@ -39,7 +42,10 @@ class DocksController < ApplicationController
   def update
     respond_to do |format|
       if @dock.update(dock_params)
-        format.html { redirect_to @dock, notice: 'Dock was successfully updated.' }
+        format.html do
+          redirect_to @dock,
+                      notice: 'Dock was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @dock }
       else
         format.html { render :edit }
@@ -53,15 +59,22 @@ class DocksController < ApplicationController
   def destroy
     @dock.destroy
     respond_to do |format|
-      format.html { redirect_to docks_url, notice: 'Dock was successfully destroyed.' }
+      format.html do
+        redirect_to docks_url,
+                    notice: 'Dock was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   def report
-    @dock = Dock.find(params["report"]["id"])
-    @start_date = Date.new params["report"]["start_date(1i)"].to_i,params["report"]["start_date(2i)"].to_i,params["report"]["start_date(3i)"].to_i
-    @end_date = Date.new params["report"]["end_date(1i)"].to_i,params["report"]["end_date(2i)"].to_i,params["report"]["end_date(3i)"].to_i
+    @dock = Dock.find(params['report']['id'])
+    @start_date = Date.new params['report']['start_date(1i)'].to_i,
+                           params['report']['start_date(2i)'].to_i,
+                           params['report']['start_date(3i)'].to_i
+    @end_date = Date.new params['report']['end_date(1i)'].to_i,
+                         params['report']['end_date(2i)'].to_i,
+                         params['report']['end_date(3i)'].to_i
     @totaldays = (@end_date - @start_date).to_i
     @timeslots = @dock.timeslots.where(date: (@start_date..@end_date))
     puts @timeslots.count
@@ -69,14 +82,17 @@ class DocksController < ApplicationController
       format.js
     end
   end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dock
-      @dock = Dock.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def dock_params
-      params.require(:dock).permit(:name)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dock
+    @dock = Dock.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def dock_params
+    params.require(:dock).permit(:name)
+  end
 end

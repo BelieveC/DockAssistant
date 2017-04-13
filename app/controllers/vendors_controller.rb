@@ -4,13 +4,14 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.order("created_at DESC").paginate(page: params[:page],per_page: 10)
+    @vendors = Vendor.order('created_at DESC').paginate(
+      page: params[:page], per_page: 10
+    )
   end
 
   # GET /vendors/1
   # GET /vendors/1.json
-  def show
-  end
+  def show; end
 
   # GET /vendors/new
   def new
@@ -18,8 +19,7 @@ class VendorsController < ApplicationController
   end
 
   # GET /vendors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /vendors
   # POST /vendors.json
@@ -28,11 +28,17 @@ class VendorsController < ApplicationController
 
     respond_to do |format|
       if @vendor.save
-        format.html { redirect_to @vendor, notice: 'Vendor was successfully created.' }
+        format.html do
+          redirect_to @vendor,
+                      notice: 'Vendor was successfully created.'
+        end
         format.json { render :show, status: :created, location: @vendor }
       else
         format.html { render :new }
-        format.json { render json: @vendor.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @vendor.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -42,11 +48,17 @@ class VendorsController < ApplicationController
   def update
     respond_to do |format|
       if @vendor.update(vendor_params)
-        format.html { redirect_to @vendor, notice: 'Vendor was successfully updated.' }
+        format.html do
+          redirect_to @vendor,
+                      notice: 'Vendor was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @vendor }
       else
         format.html { render :edit }
-        format.json { render json: @vendor.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @vendor.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -56,19 +68,24 @@ class VendorsController < ApplicationController
   def destroy
     @vendor.destroy
     respond_to do |format|
-      format.html { redirect_to vendors_url, notice: 'Vendor was successfully destroyed.' }
+      format.html do
+        redirect_to vendors_url,
+                    notice: 'Vendor was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vendor
-      @vendor = Vendor.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vendor_params
-      params.require(:vendor).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vendor
+    @vendor = Vendor.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def vendor_params
+    params.require(:vendor).permit(:name)
+  end
 end

@@ -10,86 +10,102 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111162548) do
-
-  create_table "appointments", force: :cascade do |t|
-    t.datetime "datetime"
-    t.integer  "vendor_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "name"
-    t.integer  "dock_id"
-    t.integer  "timeslot_id"
+ActiveRecord::Schema.define(version: 20_170_413_023_926) do
+  create_table 'appointments', force: :cascade do |t|
+    t.datetime 'datetime'
+    t.integer  'vendor_id'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+    t.string   'name'
+    t.integer  'dock_id'
+    t.integer  'timeslot_id'
   end
 
-  create_table "dock_schedules", force: :cascade do |t|
-    t.integer  "dock_id"
-    t.integer  "timeslot_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["dock_id"], name: "index_dock_schedules_on_dock_id"
-    t.index ["timeslot_id"], name: "index_dock_schedules_on_timeslot_id"
+  create_table 'dock_schedules', force: :cascade do |t|
+    t.integer  'dock_id'
+    t.integer  'timeslot_id'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+    t.index ['dock_id'], name: 'index_dock_schedules_on_dock_id'
+    t.index ['timeslot_id'], name: 'index_dock_schedules_on_timeslot_id'
   end
 
-  create_table "dock_workers", force: :cascade do |t|
-    t.string   "last_name"
-    t.string   "first_name"
-    t.string   "address"
-    t.integer  "state_id"
-    t.string   "zipcode"
-    t.float    "pay_rate"
-    t.boolean  "archived"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.date     "last_payment_date"
+  create_table 'dock_workers', force: :cascade do |t|
+    t.string   'last_name'
+    t.string   'first_name'
+    t.string   'address'
+    t.integer  'state_id'
+    t.string   'zipcode'
+    t.float    'pay_rate'
+    t.boolean  'archived'
+    t.datetime 'created_at',        null: false
+    t.datetime 'updated_at',        null: false
+    t.date     'last_payment_date'
   end
 
-  create_table "docks", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'docks', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.integer  "appointment_id"
-    t.integer  "dock_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+  create_table 'reservations', force: :cascade do |t|
+    t.integer  'appointment_id'
+    t.integer  'dock_id'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
   end
 
-  create_table "shipments", force: :cascade do |t|
-    t.integer  "dock_worker_id"
-    t.integer  "appointment_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+  create_table 'shipments', force: :cascade do |t|
+    t.integer  'dock_worker_id'
+    t.integer  'appointment_id'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
   end
 
-  create_table "states", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'states', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "timeslots", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date     "date"
-    t.time     "time"
+  create_table 'timeslots', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.date     'date'
+    t.time     'time'
   end
 
-  create_table "vendors", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string   'name'
+    t.string   'email',                  default: '', null: false
+    t.string   'encrypted_password',     default: '', null: false
+    t.string   'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer  'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.string   'current_sign_in_ip'
+    t.string   'last_sign_in_ip'
+    t.datetime 'created_at',                          null: false
+    t.datetime 'updated_at',                          null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  create_table "worker_schedules", force: :cascade do |t|
-    t.integer  "dock_worker_id"
-    t.integer  "timeslot_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["dock_worker_id"], name: "index_worker_schedules_on_dock_worker_id"
-    t.index ["timeslot_id"], name: "index_worker_schedules_on_timeslot_id"
+  create_table 'vendors', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
+  create_table 'worker_schedules', force: :cascade do |t|
+    t.integer  'dock_worker_id'
+    t.integer  'timeslot_id'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
+    t.index ['dock_worker_id'], name: 'index_worker_schedules_on_dock_worker_id'
+    t.index ['timeslot_id'], name: 'index_worker_schedules_on_timeslot_id'
+  end
 end

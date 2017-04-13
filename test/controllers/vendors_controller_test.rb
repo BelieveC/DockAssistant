@@ -5,40 +5,40 @@ class VendorsControllerTest < ActionDispatch::IntegrationTest
     @vendor = vendors(:two)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get vendors_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_vendor_url
     assert_response :success
   end
 
-  test "should create vendor" do
+  test 'should create vendor' do
     assert_difference('Vendor.count') do
-      post vendors_url, params: { vendor: { name: "JohnCena" } }
+      post vendors_url, params: { vendor: { name: 'JohnCena' } }
     end
 
     assert_redirected_to vendor_url(Vendor.last)
   end
 
-  test "should show vendor" do
+  test 'should show vendor' do
     get vendor_url(@vendor)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_vendor_url(@vendor)
     assert_response :success
   end
 
-  test "should update vendor" do
+  test 'should update vendor' do
     patch vendor_url(@vendor), params: { vendor: { name: @vendor.name } }
     assert_redirected_to vendor_url(@vendor)
   end
 
-  test "should destroy vendor" do
+  test 'should destroy vendor' do
     assert_difference('Vendor.count', -1) do
       delete vendor_url(@vendor)
     end

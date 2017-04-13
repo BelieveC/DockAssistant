@@ -1,6 +1,5 @@
 class QrCodesController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     @qr = RQRCode::QRCode.new(qr_code_params[:text], size: 4)
