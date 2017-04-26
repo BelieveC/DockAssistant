@@ -51,6 +51,7 @@ group :development, :test do
   # stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'railroady'
+  gem "rails-erd"
 end
 
 group :development do
